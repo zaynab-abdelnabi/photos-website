@@ -37,6 +37,10 @@ const PostSchema = new Schema({
     comments: [
         CommentSchema
     ],
+    likes: {
+        type: Number,
+        default: 0,
+    },
     created_at: {
         type: Date,
         default: Date.now,

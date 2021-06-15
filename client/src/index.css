@@ -5,10 +5,6 @@ body {
   font-family: 'Cairo', sans-serif;
 }
 
-.navbar {
-  margin-bottom: 40px;
-}
-
 .navbar ul {
   list-style-type: none;
   margin: 0;
@@ -22,7 +18,7 @@ body {
   margin-bottom: 0;
 }
 
-.navbar li:last-child{
+.navbar li:last-child {
   float: left !important;
 }
 
@@ -41,4 +37,57 @@ body {
 
 .navbar li a.active {
   border-bottom: 2px solid #f25555;
+}
+
+.container {
+  padding: 16px;
+}
+
+h4 {
+  color: #f25555;
+  font-size: 20px;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+blockquote {
+  padding: 0 10px;
+  color: #f5281af5;
+  font-weight: bold;
+  border-right: 0.3rem solid #f5291af5;
+  border-left: none;
+}
+
+input[type=text], input[type=password], input[type=email] {
+  width: 95%;
+  padding: 15px;
+  margin: 10px 0;
+  display: block;
+  border: 1px solid #967c7c;
+  border-radius: 8px;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+  background-color: #f1f1f1;
+  outline: none;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  font-family: 'Cairo', sans-serif;
+  color: white;
+  font-size: 14px;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+input[type=submit]:hover {
+  opacity: 1;
 }
