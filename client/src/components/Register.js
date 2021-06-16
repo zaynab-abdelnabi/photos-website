@@ -12,6 +12,7 @@ class Register extends React.Component {
             name: '',
             email: '',
             password: '',
+            confirmPass: '',
             error: ''
         };
     }
@@ -23,7 +24,7 @@ class Register extends React.Component {
     onSubmit = e => {
         e.preventDefault();
         let data = {
-            name: this.state.name, email: this.state.email, password: this.state.password
+            name: this.state.name, email: this.state.email, password: this.state.password, confirmPass: this.state.confirmPass
         };
         axios.post('/api/auth/register', data)
             .then(res => {
@@ -55,7 +56,7 @@ class Register extends React.Component {
                     <label>كلمة السر</label>
                     <input type="password" value={this.state.password} name="password" onChange={this.onChange} />
                     <label>تأكيد كلمة السر</label>
-                    <input type="password" />
+                    <input type="password" value={this.state.confirmPass} name="confirmPass" onChange={this.onChange} />
                     <input type="submit" value="التسجيل" />
                 </form>
             </div>

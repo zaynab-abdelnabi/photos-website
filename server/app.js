@@ -23,10 +23,7 @@ app.use('/users', usersRouter);
 app.use('/api/auth', authRouter);
 
 app.use((err, req, res, next) => {
-    if (req.get('accept').includes('json')) {
-        return next(createError(404));
-    }
-    res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.status(err.status).json({message:err.message});
 });
 
 app.use((err, req, res, next) => {
