@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import Auth from './Auth';
-import { Header, Profile, Home, Register, Login } from './components';
+import { Header, Profile, Home, Register, Login, CreatePost } from './components';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/new/post" component={CreatePost}/>
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
               </Switch>

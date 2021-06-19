@@ -18,10 +18,7 @@ const CommentSchema = new Schema({
 });
 
 const PostSchema = new Schema({
-    photo: {
-        type: String,
-        required: true
-    },
+    photo: String,
     title: {
         type: String,
         required: true,

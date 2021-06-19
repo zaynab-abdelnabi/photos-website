@@ -15,6 +15,7 @@ class Header extends React.Component {
                 <div className="navbar">
                     <ul>
                         <li><Link to="/profile">الصفحة الشخصية</Link></li>
+                        <li><Link to="/new/post">إضافة صورة</Link></li>
                         <li><Link to="/">الرئيسة</Link></li>
                         <li>
                             <ul>
@@ -29,6 +30,7 @@ class Header extends React.Component {
             <div className="navbar">
                 <ul>
                     <li><Link to="/profile">الصفحة الشخصية</Link></li>
+                    <li><Link to="/new/post">إضافة صورة</Link></li>
                     <li><Link to="/">الرئيسة</Link></li>
                     <li>
                         <ul>
