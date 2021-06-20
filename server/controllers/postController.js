@@ -6,7 +6,6 @@ exports.createPost = (req, res, next) => {
     if (!title || !caption || !req.file) {
         return next(createError(400, 'الرجاء إدخال جميع الحقول'));
     }
-    console.log(req.file);
 
     let model = new Post({
         photo: req.file.filename,
@@ -15,13 +14,22 @@ exports.createPost = (req, res, next) => {
         author: req.user.id
     });
 
-
-    console.log(model);
     model.save()
         .then(post => {
             res.json();
         })
-        .catch((err) => {
-            console.log(err);
-        });
+        .catch(next);
+};
+
+exports.list = (req, res, next) => {
+
+    Post.find()
+        .select('title caption photo')
+        .sort({ created_at: 'desc' })
+        .populate('author', 'name')
+        .then(posts => {
+            res.json(posts);
+        })
+        .catch(next);
+
 };
