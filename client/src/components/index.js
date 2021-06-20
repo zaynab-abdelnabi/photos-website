@@ -4,7 +4,8 @@ import Register from "./Register";
 import Profile from "./Profile";
 import Login from "./Login";
 import CreatePost from "./CreatePost";
+import ViewPost from "./ViewPost";
 
 export {
-    Home, Header, Register, Profile, Login, CreatePost
+    Home, Header, Register, Profile, Login, CreatePost, ViewPost
 };

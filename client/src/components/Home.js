@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import addPhoto from '../assets/add-photo.png';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 
@@ -50,9 +50,11 @@ class Home extends React.Component {
                     return (
                         <div className="container">
                             <div className="card">
-                                <img src={`uploads/${post.photo}`} alt="" className="w-100" />
+                                <Link to={"/post/view/" + post._id}>
+                                    <img src={`uploads/${post.photo}`} alt=""/>
+                                </Link>
                                 <div className="details">
-                                    <h4><b>{post.title}</b></h4>
+                                    <h4 className="cut-text"><b>{post.title}</b></h4>
                                     <p className="cut-text">{post.caption}</p>
                                 </div>
                             </div>

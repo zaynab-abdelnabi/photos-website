@@ -33,3 +33,15 @@ exports.list = (req, res, next) => {
         .catch(next);
 
 };
+
+exports.details = (req, res, next) => {
+    let postId = req.params.id;
+    Post.findById(postId)
+    .populate('author', 'name')
+    .populate('comments.author', 'name')
+    .then(post => {
+        if(!post) throw createError(404);
+        res.json(post);
+    })
+    .catch(next)
+}
