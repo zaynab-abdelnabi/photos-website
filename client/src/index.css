@@ -75,7 +75,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, tex
   outline: none;
 }
 
-input[type=submit] {
+input[type=submit], .delete {
   background-color: #04AA6D;
   font-family: 'Cairo', sans-serif;
   color: white;
@@ -88,7 +88,11 @@ input[type=submit] {
   opacity: 0.85;
 }
 
-input[type=submit]:hover {
+.delete{
+  background-color: #d11 !important;
+}
+
+input[type=submit]:hover, .delete:hover {
   opacity: 1;
 }
 
@@ -170,4 +174,8 @@ input[type=submit]:hover {
 
 .heart{
   padding-right: 5px;
+}
+
+.comment-author{
+  display: block;
 }

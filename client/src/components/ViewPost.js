@@ -7,11 +7,19 @@ class ViewPost extends React.Component {
         super(props);
         this.state = {
             post: {},
+            comment: '',
+            commentError: '',
             error: ''
         }
     }
 
+
+
     componentDidMount() {
+        this.fetchPost();
+    }
+
+    fetchPost = () => {
         let postId = this.props.match.params.id;
         axios.get('/api/posts/' + postId)
             .then(res => {
@@ -21,8 +29,43 @@ class ViewPost extends React.Component {
                 });
             })
             .catch(err => {
+                console.log(err);
+
+
+            });
+    }
+
+    onChangeComment = (e) => {
+        this.setState({
+            comment: e.target.value,
+            commentError: ''
+        });
+    }
+    onSubmit = (e) => {
+        e.preventDefault();
+        let data = {
+            content: this.state.comment
+        };
+        axios.post('/api/comments/' + this.props.match.params.id, data)
+            .then(res => {
+                let post = this.state.post;
+                post.comments.push({
+                    _id: res.data._id,
+                    content: res.data.content,
+                    author: {
+                        _id: JSON.parse(localStorage.getItem('user'))._id
+                    }
+                });
                 this.setState({
-                    error: err.response.data.message,
+                    post: post,
+                    commentError: '',
+                    comment: ''
+                })
+                this.fetchPost();
+            })
+            .catch(err => {
+                this.setState({
+                    commentError: <blockquote>{err.response.data.message}</blockquote>
                 });
             });
     }
@@ -45,12 +88,45 @@ class ViewPost extends React.Component {
             if (userDetails.token && userDetails._id === this.state.post.author._id) {
                 return (
                     <span>
-                        <button onClick={this.deletePost}>حذف</button>
+                        <button className='delete' onClick={this.deletePost}>حذف</button>
                     </span>
                 );
             }
         }
     }
+
+    renderComments() {
+        let comments = <p>لا يوجد تعليقات</p>
+        if (this.state.post.comments.length) {
+            comments = this.state.post.comments.map(comment => {
+                return (
+                    <p key={comment._id}>
+                        <strong className='comment-author'>{comment.author.name}</strong>
+                        {comment.content}
+                    </p>
+                )
+            });
+        }
+        return comments;
+    }
+
+    renderCommentForm = () => {
+        if (!localStorage.getItem('user')) {
+            return (<p>الرجاء تسجيل الدخول للتعليق على هذه الصورة</p>)
+        }
+        return (
+            <div>
+                <h4>إضافة تعليق</h4>
+                {this.state.commentError}
+                <form onSubmit={this.onSubmit}>
+                    <textarea value={this.state.comment} onChange={this.onChangeComment}></textarea>
+                    <input type="submit" value="إضافة التعليق" />
+                </form>
+            </div>
+        )
+    }
+
+
 
     render() {
         if (this.state.error) {
@@ -61,13 +137,16 @@ class ViewPost extends React.Component {
         }
         return (
             <div className="container">
+                <h4><b>{this.state.post.title}</b></h4>
                 <img src={`/uploads/${this.state.post.photo}`} alt="" className="show-photo" />
-
                 <div className="details">
-                    <h4><b>{this.state.post.title}</b></h4>
                     <p>{this.state.post.caption}</p>
                     <p>{localStorage.getItem('user.token')}</p>
                     {this.renderAction()}
+                    <hr />
+                    <h4>التعليقات</h4>
+                    {this.renderComments()}
+                    {this.renderCommentForm()}
                 </div>
             </div>
         );

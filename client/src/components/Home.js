@@ -129,25 +129,28 @@ class Home extends React.Component {
             return (<h4>لا يوجد صور لعرضها</h4>);
         }
         return (
-            <div className="posts">
-                {this.state.posts.map(post => {
-                    return (
-                        <div className="container">
-                            <div className="card">
-                                <Link to={"/post/view/" + post._id}>
-                                    <img src={`uploads/${post.photo}`} alt="" />
-                                </Link>
-                                <div className="details">
-                                    <h4 className="cut-text"><b>{post.title}</b></h4>
-                                    <p className="cut-text">{post.caption}</p>
-                                    {this.renderLike(post)}
+            <div className='container'>
+                <h4>المنشورات</h4>
+                <div className="posts">
+                    {this.state.posts.map(post => {
+                        return (
+                            <div className="container">
+                                <div className="card">
+                                    <Link to={"/post/view/" + post._id}>
+                                        <img src={`uploads/${post.photo}`} alt="" />
+                                    </Link>
+                                    <div className="details">
+                                        <h4 className="cut-text"><b>{post.title}</b></h4>
+                                        <p className="cut-text">{post.caption}</p>
+                                        {this.renderLike(post)}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
+
         )
     }
 }

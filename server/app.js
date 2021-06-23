@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const postsRouter = require('./routes/posts');
 const likesRouter = require('./routes/like');
+const commentsRouter = require('./routes/comments');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use('/users', usersRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/likes', likesRouter);
+app.use('/api/comments', commentsRouter);
 
 app.use((err, req, res, next) => {
     res.status(err.status).json({ message: err.message });
