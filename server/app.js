@@ -9,7 +9,8 @@ const createError = require('http-errors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-const postsRouter = require('./routes/posts')
+const postsRouter = require('./routes/posts');
+const likesRouter = require('./routes/like');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
+app.use('/api/likes', likesRouter);
 
 app.use((err, req, res, next) => {
     res.status(err.status).json({ message: err.message });

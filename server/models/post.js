@@ -17,6 +17,17 @@ const CommentSchema = new Schema({
     }
 });
 
+const LikeSchema = new Schema({
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    created_at: {
+        type: Date,
+        default: Date.now,
+    }
+})
+
 const PostSchema = new Schema({
     photo: String,
     title: {
@@ -34,10 +45,9 @@ const PostSchema = new Schema({
     comments: [
         CommentSchema
     ],
-    likes: {
-        type: Number,
-        default: 0,
-    },
+    likes:[
+        LikeSchema
+    ],
     created_at: {
         type: Date,
         default: Date.now,

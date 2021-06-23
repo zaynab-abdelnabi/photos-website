@@ -39,7 +39,6 @@ class CreatePost extends React.Component {
         data.append('title', this.state.title);
         data.append('caption', this.state.caption);
         if (this.state.selectedFile) data.append('photo', this.state.selectedFile)
-        console.log(this.state.selectedFile);
         axios.post('/api/posts', data)
             .then(res => {
                 this.props.history.push('/');

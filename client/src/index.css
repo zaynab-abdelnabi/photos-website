@@ -114,6 +114,7 @@ input[type=submit]:hover {
   transition: 0.3s;
   width: 270px;
   height: 330px;
+  position: relative;
 }
 
 .card:hover {
@@ -144,4 +145,29 @@ input[type=submit]:hover {
   display: block;
   min-width: 50%;
   max-height: 500px;
+}
+
+.unlike{
+  color: white;
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  padding: 3px 6px 2px 6px;
+}
+
+.unlike:hover{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.like{
+  color:red !important; 
+}
+
+.like-num{
+  color: white !important;
+}
+
+.heart{
+  padding-right: 5px;
 }

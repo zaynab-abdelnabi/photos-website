@@ -27,6 +27,7 @@ exports.list = (req, res, next) => {
         .select('title caption photo')
         .sort({ created_at: 'desc' })
         .populate('author', 'name')
+        .populate('likes.author', 'name')
         .then(posts => {
             res.json(posts);
         })
@@ -37,11 +38,21 @@ exports.list = (req, res, next) => {
 exports.details = (req, res, next) => {
     let postId = req.params.id;
     Post.findById(postId)
-    .populate('author', 'name')
-    .populate('comments.author', 'name')
+        .populate('author', 'name')
+        .populate('comments.author', 'name')
+        .then(post => {
+            if (!post) throw createError(404);
+            res.json(post);
+        })
+        .catch(next)
+}
+
+exports.delete = (req, res, next) => {
+    Post.findOneAndDelete({ _id: req.params.id, author: req.user.id })
     .then(post => {
         if(!post) throw createError(404);
-        res.json(post);
+        res.json();
     })
-    .catch(next)
-}
+    .catch(next);
+};
+

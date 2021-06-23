@@ -1,8 +1,12 @@
 import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart} from '@fortawesome/free-solid-svg-icons';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import Auth from './Auth';
 import { Header, Profile, Home, Register, Login, CreatePost, ViewPost } from './components';
+
+library.add( faHeart)
 
 
 class App extends React.Component {
@@ -24,7 +28,6 @@ class App extends React.Component {
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
                 <Route path="/post/view/:id" component={ViewPost} />
-
               </Switch>
             </div>
           </div>
