@@ -4,7 +4,7 @@ import { faHeart} from '@fortawesome/free-solid-svg-icons';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import Auth from './Auth';
-import { Header, Profile, Home, Register, Login, CreatePost, ViewPost } from './components';
+import { Header, Profile, Home, Register, Login, CreatePost, ViewPost, EditPost } from './components';
 
 library.add( faHeart)
 
@@ -28,6 +28,7 @@ class App extends React.Component {
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
                 <Route path="/post/view/:id" component={ViewPost} />
+                <Route path="/post/edit/:id" component={EditPost} />
               </Switch>
             </div>
           </div>

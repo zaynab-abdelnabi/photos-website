@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class ViewPost extends React.Component {
 
@@ -88,6 +89,9 @@ class ViewPost extends React.Component {
             if (userDetails.token && userDetails._id === this.state.post.author._id) {
                 return (
                     <span>
+                        <Link to={'/post/edit/' + this.state.post._id}>
+                            <button className='edit'>تعديل</button>
+                        </Link>
                         <button className='delete' onClick={this.deletePost}>حذف</button>
                     </span>
                 );
@@ -100,7 +104,7 @@ class ViewPost extends React.Component {
         if (this.state.post.comments.length) {
             comments = this.state.post.comments.map(comment => {
                 return (
-                    <p key={comment._id}>
+                    <p key={comment._id} className="comment">
                         <strong className='comment-author'>{comment.author.name}</strong>
                         {comment.content}
                     </p>
@@ -144,7 +148,7 @@ class ViewPost extends React.Component {
                     <p>{localStorage.getItem('user.token')}</p>
                     {this.renderAction()}
                     <hr />
-                    <h4>التعليقات</h4>
+                    <h4>التعليقات<span className="comment-num">({this.state.post.comments.length})</span></h4>
                     {this.renderComments()}
                     {this.renderCommentForm()}
                 </div>

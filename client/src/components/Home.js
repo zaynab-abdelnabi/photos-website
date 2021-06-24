@@ -72,7 +72,6 @@ class Home extends React.Component {
                     liked = false;
                 }
             });
-            console.log(liked);
             if (liked) {
                 this.like(post._id);
             }
@@ -129,7 +128,7 @@ class Home extends React.Component {
             return (<h4>لا يوجد صور لعرضها</h4>);
         }
         return (
-            <div className='container'>
+            <div>
                 <h4>المنشورات</h4>
                 <div className="posts">
                     {this.state.posts.map(post => {

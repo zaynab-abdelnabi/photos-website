@@ -75,7 +75,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, tex
   outline: none;
 }
 
-input[type=submit], .delete {
+input[type=submit], .delete, .edit {
   background-color: #04AA6D;
   font-family: 'Cairo', sans-serif;
   color: white;
@@ -88,11 +88,15 @@ input[type=submit], .delete {
   opacity: 0.85;
 }
 
-.delete{
+.delete {
   background-color: #d11 !important;
 }
 
-input[type=submit]:hover, .delete:hover {
+.edit{
+  background-color: #24a0ed !important;
+}
+
+input[type=submit]:hover, .delete:hover, .edit:hover {
   opacity: 1;
 }
 
@@ -151,31 +155,42 @@ input[type=submit]:hover, .delete:hover {
   max-height: 500px;
 }
 
-.unlike{
+.unlike {
   color: white;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 60%;
   left: 5%;
   padding: 3px 6px 2px 6px;
 }
 
-.unlike:hover{
+.unlike:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.like{
-  color:red !important; 
+.like {
+  color: red !important;
 }
 
-.like-num{
+.like-num {
   color: white !important;
 }
 
-.heart{
+.heart {
   padding-right: 5px;
 }
 
-.comment-author{
+.comment-author {
   display: block;
+}
+
+.comment {
+  border-right: 1px solid black;
+  padding: 5px 15px;
+  background-color: #eee;
+}
+
+.comment-num {
+  color: #000;
+  margin-right: 5px;
 }
