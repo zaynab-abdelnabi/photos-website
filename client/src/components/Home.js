@@ -133,7 +133,7 @@ class Home extends React.Component {
                 <div className="posts">
                     {this.state.posts.map(post => {
                         return (
-                            <div className="container">
+                            <div className="container" key={post._id}>
                                 <div className="card">
                                     <Link to={"/post/view/" + post._id}>
                                         <img src={`uploads/${post.photo}`} alt="" />

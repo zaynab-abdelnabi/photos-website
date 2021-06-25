@@ -30,9 +30,9 @@ class ViewPost extends React.Component {
                 });
             })
             .catch(err => {
-                console.log(err);
-
-
+                this.setState({
+                    error: err.response.data.message
+                })
             });
     }
 
@@ -145,7 +145,6 @@ class ViewPost extends React.Component {
                 <img src={`/uploads/${this.state.post.photo}`} alt="" className="show-photo" />
                 <div className="details">
                     <p>{this.state.post.caption}</p>
-                    <p>{localStorage.getItem('user.token')}</p>
                     {this.renderAction()}
                     <hr />
                     <h4>التعليقات<span className="comment-num">({this.state.post.comments.length})</span></h4>

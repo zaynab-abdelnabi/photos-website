@@ -1,12 +1,12 @@
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import Auth from './Auth';
 import { Header, Profile, Home, Register, Login, CreatePost, ViewPost, EditPost } from './components';
 
-library.add( faHeart)
+library.add( faHeart, faTrash, faEdit)
 
 
 class App extends React.Component {

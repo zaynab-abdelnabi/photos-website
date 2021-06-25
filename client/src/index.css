@@ -88,15 +88,32 @@ input[type=submit], .delete, .edit {
   opacity: 0.85;
 }
 
-.delete {
+.delete-icon, .edit-icon {
+  color: white;
+  font-size: 14px;
+  padding: 10px 15px;
+  margin: 0px 7px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.delete, .delete-icon {
   background-color: #d11 !important;
 }
 
-.edit{
+.edit, .edit-icon {
   background-color: #24a0ed !important;
 }
 
-input[type=submit]:hover, .delete:hover, .edit:hover {
+.delete-edit {
+  position: absolute;
+  top: 58%;
+  right: 0;
+}
+
+input[type=submit]:hover, .delete:hover, .edit:hover, .delete-icon:hover, .edit-icon:hover {
   opacity: 1;
 }
 
@@ -109,6 +126,7 @@ input[type=submit]:hover, .delete:hover, .edit:hover {
   max-height: 400px;
   display: block;
   margin: 10px auto;
+  cursor: pointer;
 }
 
 .posts {
@@ -159,9 +177,14 @@ input[type=submit]:hover, .delete:hover, .edit:hover {
   color: white;
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 60%;
-  left: 5%;
-  padding: 3px 6px 2px 6px;
+  top: 58%;
+  left: 3%;
+  font-size: 16px;
+  padding: 7px 10px;
+  margin: 0px 7px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .unlike:hover {
