@@ -8,6 +8,9 @@ class Profile extends React.Component {
 
     constructor(props) {
         super(props);
+        if (!localStorage.getItem('user')) {
+            this.props.history.push('/login');
+        }
         this.state = {
             posts: [],
             username: '',
@@ -25,7 +28,7 @@ class Profile extends React.Component {
             .then(res => {
                 let posts = []
                 res.data.map(post => {
-                    if (post.author._id === JSON.parse(localStorage.getItem('user'))._id) {
+                    if (localStorage.getItem('user') && post.author._id === JSON.parse(localStorage.getItem('user'))._id) {
                         posts.push(post);
                     }
                 });
